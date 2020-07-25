@@ -1,15 +1,12 @@
 package com.lee.practice.myslippdemo.domain;
 
 import javax.annotation.Generated;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class User {
     @Id //pk
-    @GeneratedValue //자동으로 1씩 증가
+    @GeneratedValue(strategy = GenerationType.IDENTITY) //자동으로 1씩 증가
     private Long id;
 
     @Column(nullable = false, length = 20) //기본적으로 null 값이 들어갈 수 없음
