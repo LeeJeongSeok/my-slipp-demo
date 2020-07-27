@@ -9,7 +9,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY) //자동으로 1씩 증가
     private Long id;
 
-    @Column(nullable = false, length = 20) //기본적으로 null 값이 들어갈 수 없음
+    @Column(nullable = false, length = 20, unique = true) //기본적으로 null 값이 들어갈 수 없음
     private String userId;
 
     private String password;
@@ -30,6 +30,10 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public String getPassword() {
