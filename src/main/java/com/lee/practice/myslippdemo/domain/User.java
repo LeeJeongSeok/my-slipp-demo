@@ -28,6 +28,10 @@ public class User {
         return newId.equals(userId);
     }
 
+    public String getUserId() {
+        return userId;
+    }
+
     public void setPassword(String password) {
         this.password = password;
     }

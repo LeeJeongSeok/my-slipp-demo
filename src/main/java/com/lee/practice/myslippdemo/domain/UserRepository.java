@@ -1,4 +1,4 @@
-package com.lee.practice.myslippdemo;
+package com.lee.practice.myslippdemo.domain;
 
 import com.lee.practice.myslippdemo.domain.User;
 import org.springframework.data.jpa.repository.JpaRepository;
