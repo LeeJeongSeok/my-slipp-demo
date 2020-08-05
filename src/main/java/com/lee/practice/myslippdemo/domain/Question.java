@@ -3,6 +3,7 @@ package com.lee.practice.myslippdemo.domain;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Objects;
 
 @Entity
 public class Question {
@@ -44,4 +45,11 @@ public class Question {
         this.title = title;
         this.contents = contents;
     }
+
+    public boolean isSameWriter(User loginUser) {
+        System.out.println("writer status : " + this.writer.equals(loginUser));
+        return this.writer.equals(loginUser);
+    }
+
+
 }

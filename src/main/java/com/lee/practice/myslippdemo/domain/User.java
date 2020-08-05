@@ -2,6 +2,7 @@ package com.lee.practice.myslippdemo.domain;
 
 import javax.annotation.Generated;
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 public class User {
@@ -74,5 +75,18 @@ public class User {
         this.password = newUser.password;
         this.name = newUser.name;
         this.email = newUser.email;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof User)) return false;
+        User user = (User) o;
+        return getId().equals(user.getId());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId());
     }
 }
