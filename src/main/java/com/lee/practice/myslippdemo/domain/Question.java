@@ -3,6 +3,7 @@ package com.lee.practice.myslippdemo.domain;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -18,9 +19,14 @@ public class Question {
 
     private String title;
 
+    @Lob
     private String contents;
 
     private LocalDateTime createDate;
+
+    @OneToMany(mappedBy = "question")
+    @OrderBy("id ASC")
+    private List<Answer> answers;
 
     public Question() {
 
