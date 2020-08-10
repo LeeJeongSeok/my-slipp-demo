@@ -1,5 +1,8 @@
 package com.lee.practice.myslippdemo.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.annotation.Generated;
 import javax.persistence.*;
 import java.util.Objects;
@@ -8,13 +11,20 @@ import java.util.Objects;
 public class User {
     @Id //pk
     @GeneratedValue(strategy = GenerationType.IDENTITY) //자동으로 1씩 증가
+    @JsonProperty
     private Long id;
 
     @Column(nullable = false, length = 20, unique = true) //기본적으로 null 값이 들어갈 수 없음
+    @JsonProperty
     private String userId;
 
+    @JsonIgnore
     private String password;
+
+    @JsonProperty
     private String name;
+
+    @JsonProperty
     private String email;
 
     public void setUserId(String userId) {
