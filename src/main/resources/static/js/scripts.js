@@ -33,7 +33,8 @@ function onSuccess(data, status) {
     $("textarea[name=contents]").val("");
 }
 
-$("a.link-delete-article").click(deleteAnswer);
+// $("a.link-delete-article").click(deleteAnswer);
+$(document).on('click', '.link-delete-article', deleteAnswer);
 
 function deleteAnswer(e) {
     e.preventDefault();
