@@ -8,11 +8,7 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-public class User {
-    @Id //pk
-    @GeneratedValue(strategy = GenerationType.IDENTITY) //자동으로 1씩 증가
-    @JsonProperty
-    private Long id;
+public class User extends AbstractEntity{
 
     @Column(nullable = false, length = 20, unique = true) //기본적으로 null 값이 들어갈 수 없음
     @JsonProperty
@@ -29,14 +25,6 @@ public class User {
 
     public void setUserId(String userId) {
         this.userId = userId;
-    }
-
-    public boolean matchId(Long newId) {
-        if (newId == null) {
-            return false;
-        }
-
-        return newId.equals(userId);
     }
 
     public String getUserId() {
@@ -63,18 +51,13 @@ public class User {
         this.email = email;
     }
 
-    public Long getId() {
-        return id;
-    }
-
     public String getPassword() {
         return password;
     }
 
     @Override
     public String  toString() {
-        return "User{" +
-                "userId='" + userId + '\'' +
+        return "User{" + super.toString() + '\'' +
                 ", password='" + password + '\'' +
                 ", name='" + name + '\'' +
                 ", email='" + email + '\'' +
@@ -87,16 +70,11 @@ public class User {
         this.email = newUser.email;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof User)) return false;
-        User user = (User) o;
-        return getId().equals(user.getId());
-    }
+    public boolean matchId(Long newId) {
+        if (newId == null) {
+            return false;
+        }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(getId());
+        return newId.equals(getId());
     }
 }
