@@ -5,6 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import springfox.documentation.builders.ApiInfoBuilder;
+import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.service.ApiInfo;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
@@ -24,17 +25,17 @@ public class MySlippDemoApplication {
     @Bean
     public Docket newApi() {
         return new Docket(DocumentationType.SWAGGER_2)
-                .groupName("greetings")
+                .groupName("my-slipp")
                 .apiInfo(apiInfo())
                 .select()
-                .paths(regex("/greeting.*"))
+                .paths(PathSelectors.ant("/api/**"))
                 .build();
     }
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("Spring Rest Sample with Swagger")
-                .description("Spring Rest Sample with Swagger")
+                .title("My Slipp API")
+                .description("My Slipp API")
                 .termsOfServiceUrl("")
                 .contact("")
                 .license("")
